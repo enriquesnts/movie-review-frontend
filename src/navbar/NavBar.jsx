@@ -64,7 +64,7 @@ export default function SearchAppBar() {
           >
             Movie Review
           </Typography>
-          <Search sx={{    backgroundColor: "red" }}>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>

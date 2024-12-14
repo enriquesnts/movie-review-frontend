@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.4.0",
     "@mui/icons-material": "^6.2.0",
     "@mui/material": "^6.2.0",
+    "movie-review": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^6.28.0",
