@@ -8,9 +8,9 @@ console.log(apiurl)
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    email: "",
-    username: "",
-    password: "",
+    correo: "",
+    nombre: "",
+    contrasena: "",
   });
 
   const handleChange = (e) => {
@@ -23,7 +23,14 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch({url:apiurl + "/registro", method:"post", body:formData})
+    const response = await fetch(apiurl + "/registro", {method:"post", body:JSON.stringify(formData), mode: 'cors', headers: {"Content-Type": "application/json"}})
+    if (response.ok) {
+    console.log("Registro completado correctamente");
+    }else{
+    console.log("El registro no se pudo completar");
+    const error = await response.json();
+    console.log(error);
+    }
     console.log("Datos enviados:", formData);
   };
 
@@ -55,7 +62,7 @@ export default function Register() {
             label="Correo Electrónico" 
             variant="outlined"
             margin="normal"
-            name="email"
+            name="correo"
             type="email"
             value={formData.email}
             onChange={handleChange}
@@ -66,7 +73,7 @@ export default function Register() {
             label="Nombre de Usuario"
             variant="outlined"
             margin="normal"
-            name="username"
+            name="nombre"
             value={formData.username}
             onChange={handleChange}
             required
@@ -76,7 +83,7 @@ export default function Register() {
             label="Contraseña"
             variant="outlined"
             margin="normal"
-            name="password"
+            name="contrasena"
             type="password"
             value={formData.password}
             onChange={handleChange}
