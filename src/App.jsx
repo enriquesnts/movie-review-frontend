@@ -7,6 +7,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import NavBar from "./navbar/NavBar";
 import Register from "./register";
+import LogIn from "./LogIn";
 
 export default function App() {
   return (
@@ -29,14 +30,20 @@ export default function App() {
                     Reseña tus películas favoritas
                   </Typography>
                 </Box>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                 <Button component={Link} to="/register" variant="contained" color="primary">
                   <Typography>Regístrate</Typography>
                 </Button>
+                <Button component={Link} to="/LogIn" variant="contained" color="primary">
+                  <Typography>Bienvenido</Typography>
+                </Button>
+                </Box>
               </Container>
             </Box>
           }
         />
         <Route path="/register" element={<Register />} />
+        <Route path="/LogIn" element={<LogIn />} />
       </Routes>
     </>
   );
