@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Container, TextField, Typography, Button, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [formData, setFormData] = useState({
     correo: "",
     contrasena: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,6 +21,11 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Datos ingresados:", formData);
+    if (formData.correo && formData.contrasena) {
+        navigate("/moviereview");
+      } else {
+        alert("Por favor, ingresa tus datos correctamente.");
+      }
   };
 
   return (
