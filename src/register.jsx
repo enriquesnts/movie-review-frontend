@@ -3,8 +3,6 @@ import { Container, TextField, Typography, Button, Box } from "@mui/material";
 import { registro } from "./clientApi/cliente";
 import { useNavigate } from "react-router";
 
-const apiurl = import.meta.env.VITE_MOVIES_API;
-
 export default function Register() {
   const [formData, setFormData] = useState({
     correo: "",
@@ -39,7 +37,10 @@ export default function Register() {
         justifyContent: "center",
       }}
     >
-      <Container maxWidth="sm" sx={{ bgcolor: "rgba(0, 0, 0, 0.8)", p: 4, borderRadius: 2 }}>
+      <Container
+        maxWidth="sm"
+        sx={{ bgcolor: "rgba(0, 0, 0, 0.8)", p: 4, borderRadius: 2 }}
+      >
         <Typography
           fontFamily="monospace"
           fontWeight={700}
@@ -51,9 +52,10 @@ export default function Register() {
           ¡Registrate!
         </Typography>
         <form onSubmit={handleSubmit}>
-          <TextField sx={{ bgcolor: "white" }}
+          <TextField
+            sx={{ bgcolor: "white" }}
             fullWidth
-            label="Correo Electrónico" 
+            label="Correo Electrónico"
             variant="outlined"
             margin="normal"
             name="correo"
@@ -62,7 +64,8 @@ export default function Register() {
             onChange={handleChange}
             required
           />
-          <TextField sx={{ bgcolor: "white" }}
+          <TextField
+            sx={{ bgcolor: "white" }}
             fullWidth
             label="Nombre de Usuario"
             variant="outlined"
@@ -72,7 +75,8 @@ export default function Register() {
             onChange={handleChange}
             required
           />
-          <TextField sx={{ bgcolor: "white" }}
+          <TextField
+            sx={{ bgcolor: "white" }}
             fullWidth
             label="Contraseña"
             variant="outlined"

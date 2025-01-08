@@ -1,6 +1,6 @@
 import { getUsuarioDatos } from "../userDatos";
 
-const apiurl = "http://localhost:8080";
+const apiurl = import.meta.env.VITE_MOVIES_API;
 const endpointRegistro = "/registro";
 const endpointLogin = "/login";
 const endpointPeliculas = "/peliculas";
