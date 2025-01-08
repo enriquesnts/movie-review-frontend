@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Container, TextField, Typography, Button, Box } from "@mui/material";
+import { registro } from "./clientApi/cliente";
+import { useNavigate } from "react-router";
 
-
-const apiurl = import.meta.env.VITE_MOVIES_API
-
-console.log(apiurl)
+const apiurl = import.meta.env.VITE_MOVIES_API;
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -12,6 +11,8 @@ export default function Register() {
     nombre: "",
     contrasena: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,15 +24,8 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(apiurl + "/registro", {method:"post", body:JSON.stringify(formData), mode: 'cors', headers: {"Content-Type": "application/json"}})
-    if (response.ok) {
-    console.log("Registro completado correctamente");
-    }else{
-    console.log("El registro no se pudo completar");
-    const error = await response.json();
-    console.log(error);
-    }
-    console.log("Datos enviados:", formData);
+    await registro(formData);
+    navigate("/login");
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, TextField, Typography, Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { login } from "./clientApi/cliente";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -18,21 +19,18 @@ export default function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Datos ingresados:", formData);
-    if (formData.correo && formData.contrasena) {
-        navigate("/moviereview");
-      } else {
-        alert("Por favor, ingresa tus datos correctamente.");
-      }
+    const response = await login(formData);
+    sessionStorage.setItem("userData", JSON.stringify(response));
+    navigate("/");
   };
 
   return (
     <Box
       sx={{
         height: "100vh",
-        backgroundImage: "url(background.jpg)", 
+        backgroundImage: "url(background.jpg)",
         backgroundSize: "cover",
         display: "flex",
         alignItems: "center",
